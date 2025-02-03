@@ -25,9 +25,8 @@ export default function App() {
     id: string;
     title: string;
     completed: boolean;
+    message?: string;
   }
-
-  let submitMessage = "";
 
   function addTodo(title: string) {
     //Hier wird ein neues Todo-Item hinzugefügt.
@@ -42,8 +41,7 @@ export default function App() {
         ]
       }
       console.log("Todo already exists: ", newtitle);
-      submitMessage = "Die Aufgabe existiert bereits.";
-      return currentTodos;
+      return [currentTodos];
     })
   }
 
@@ -65,14 +63,13 @@ export default function App() {
     })
   }
 
-  const currentDate = new Date().toLocaleDateString();
   const todos_completed = todos.filter((t: TodoItem) => t.completed).length;
   const todos_open = todos.length - todos_completed;
 
   return (
     <>
-      <NewTodoForm onSubmit={addTodo} onSubmitMessage={submitMessage} />
-      <h1 className='header'>Todo List - Heute {currentDate}</h1>
+      <NewTodoForm onSubmit={addTodo} />
+      <h1 className='header'>Todo List</h1>
       <TodoList
         todos={todos}
         toggleTodo={toggleTodo}

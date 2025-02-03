@@ -2,11 +2,12 @@ export interface TodoItemProps {
     completed: boolean;
     id: string;
     title: string;
+    date_created: string;
     toggleTodo: (id: string) => void;
     handleDeleteItem: (id: string) => void;
 }
 
-export function TodoItem({ completed, id, title, toggleTodo, handleDeleteItem }: TodoItemProps) {
+export function TodoItem({ completed, id, title, date_created, toggleTodo, handleDeleteItem }: TodoItemProps) {
     return (
         <li>
             <label>
@@ -14,7 +15,7 @@ export function TodoItem({ completed, id, title, toggleTodo, handleDeleteItem }:
                     checked={completed}
                     onChange={() => toggleTodo(id)}
                 />
-                {title}
+                {title} - {date_created}
             </label>
             <button
                 className='btn btn-danger'

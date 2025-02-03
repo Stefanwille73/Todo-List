@@ -2,11 +2,10 @@ import { useState } from 'react';
 
 interface NewTodoFormProps {
     onSubmit: (title: string) => void;
-    onSubmitMessage: string;
 }
 
 //Über die Props wird die Funktion onSubmit übergeben.
-export function NewTodoForm({ onSubmit, onSubmitMessage } : NewTodoFormProps) {
+export function NewTodoForm({ onSubmit } : NewTodoFormProps) {
     const [newItem, setNewItem] = useState('');
 
     function handleSubmit(e: React.FormEvent) {
@@ -17,7 +16,7 @@ export function NewTodoForm({ onSubmit, onSubmitMessage } : NewTodoFormProps) {
             return;
         }
         
-        // Hier wird ein neues Todo-Item hinzugefügt.
+        //Hier wird ein neues Todo-Item hinzugefügt.
         onSubmit(newItem)
 
         //Nach dem Absenden des Formulars wird das Eingabefeld geleert.
@@ -33,9 +32,7 @@ export function NewTodoForm({ onSubmit, onSubmitMessage } : NewTodoFormProps) {
                     onChange={(e) => setNewItem(e.target.value)} />
             </div>
             <button className='btn' type="submit">Hinzufügen</button>
-            <div className='form-row'>
-                <span>{onSubmitMessage}</span>
-            </div>
+            
         </form>
     )
 }
