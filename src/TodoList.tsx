@@ -6,8 +6,7 @@ interface TodoListProps {
     handleDeleteItem: (id: string) => void;
 }
 
-export function TodoList({ todos, toggleTodo, handleDeleteItem }: TodoListProps) {    
-    const currentDate = new Date().toLocaleDateString();
+export function TodoList({ todos, toggleTodo, handleDeleteItem }: TodoListProps) {        
     return (
         <ul className='list'>
             {/* Hier wird die Todo-Liste angezeigt. */}
@@ -16,7 +15,6 @@ export function TodoList({ todos, toggleTodo, handleDeleteItem }: TodoListProps)
                 return (
                     <TodoItem {...todo} 
                         key={todo.id}
-                        date_created={currentDate}
                         toggleTodo={toggleTodo}
                         handleDeleteItem={handleDeleteItem}                         
                 />

@@ -26,18 +26,20 @@ export default function App() {
     title: string;
     completed: boolean;
     message?: string;
+    date_created: string;
   }
 
   function addTodo(title: string) {
     //Hier wird ein neues Todo-Item hinzugefügt.
     setTodos((currentTodos: TodoItem[]) => {
       let newtitle = title?.trim();
+      let currentDate = new Date().toLocaleDateString();
       //Hinzufügen eines neuen Todo-Items, 
       //wenn der Titel nicht leer ist und das Todo-Item noch nicht existiert.
       if (newtitle?.length > 0 && !todos.some((t: TodoItem) => t.title === newtitle)) {
         return [
           ...currentTodos,
-          { id: crypto.randomUUID(), title, completed: false },
+          { id: crypto.randomUUID(), title, completed: false, date_created: currentDate },
         ]
       }
       console.log("Todo already exists: ", newtitle);
