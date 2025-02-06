@@ -3,19 +3,24 @@ export interface TodoItemProps {
     id: string;
     title: string;
     date_created: string;
+    notiz?: string;
     toggleTodo: (id: string) => void;
     handleDeleteItem: (id: string) => void;
 }
 
-export function TodoItem({ completed, id, title, date_created, toggleTodo, handleDeleteItem }: TodoItemProps) {
+export function TodoItem({ completed, id, title, date_created, notiz, toggleTodo, handleDeleteItem }: TodoItemProps) {
     return (
         <li>
             <label>
-                <input type="checkbox"
-                    checked={completed}
-                    onChange={() => toggleTodo(id)}
-                />
-                {title} - {date_created}
+                
+                <div className="todo-item">
+                    <input type="checkbox"
+                        checked={completed}
+                        onChange={() => toggleTodo(id)}
+                    />
+                    <span>{title} - {date_created}</span>
+                    {notiz && <p>{notiz}</p>}
+                </div>
             </label>
             <button
                 className='btn btn-danger'
